@@ -6,28 +6,29 @@ import java.util.ArrayList;
  * Created by SeongJung on 2016-09-16.
  */
 public class InsertionSort {
-    private ArrayList<Integer> array;
+    private int[] array;
     private int length;
 
-    public InsertionSort(ArrayList<Integer> array) {
+    public InsertionSort(int[] array) {
         this.array = array;
-        this.length = array.size();
     }
 
-    public void insertionSort() {
-        for (int i = 1; i < this.length; i++) {
-            int key = this.array.get(i);
+    public void doInsertionSort() {
+        for (int i = 1; i < array.length; i++) {
+            int key = this.array[i];
             int j = i - 1;
 
-            while (j > 0 && this.array.get(j) > key) {
-                this.array.add(j + 1, this.array.get(j));
+            while (j >= 0 && this.array[j] > key) {
+                this.array[j+1] = this.array[j];
                 j = j - 1;
             }
-            this.array.add(j + 1, key);
+            this.array[j+1] = key;
         }
     }
 
-    public ArrayList<Integer> getArray() {
-        return this.array;
+    public void printResult() {
+        for (int i = 0; i < this.array.length; i++) {
+            System.out.println(this.array[i]);
+        }
     }
 }
