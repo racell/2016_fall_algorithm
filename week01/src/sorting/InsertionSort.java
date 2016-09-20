@@ -25,7 +25,7 @@ public class InsertionSort {
         }
     }
 
-    public void printResult() {
-        System.out.println(this.array.toString());
+    public ArrayList<Integer> getArray() {
+        return this.array;
     }
 }
