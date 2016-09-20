@@ -10,8 +10,8 @@ public class SortingTest {
 
     public static void main(String[] args) throws IOException {
         FileManger fileManger = new FileManger("data02.txt", "result.txt");
-        InsertionSort insertionSort = new InsertionSort(fileManger.readFile());
-        insertionSort.doInsertionSort();
-        fileManger.writeFile(insertionSort.getArray());
+        BinaryInsertion binaryInsertion = new BinaryInsertion(fileManger.readFile());
+        binaryInsertion.doInsertionSort();
+        fileManger.writeFile(binaryInsertion.getArray());
     }
 }
