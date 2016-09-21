@@ -9,13 +9,12 @@ public class SortingTest {
 
     public static void main(String[] args) throws IOException {
         long start, end;
-
-        FileManger fileManger = new FileManger("data02.txt", "hw02_00_201202135_merge.txt");
+        FileManager fileManger = new FileManager("data02.txt", "hw02_00_201202135_merge.txt");
         MergeSort mergeSort = new MergeSort(fileManger.readFile());
         start = System.nanoTime();
         mergeSort.doMergeSort(mergeSort.getArray());
         end = System.nanoTime();
-        System.out.println("merge time : " + ((end - start) / 1000d) + "ms");
+        System.out.println("merge time : " + ((end - start) / 1000d) + " microsecond");
         fileManger.writeFile(mergeSort.getArray(), mergeSort.getMergeCount());
 
         fileManger.setOutputFileName("hw02_00_201202135_3way_merge.txt");
@@ -23,7 +22,7 @@ public class SortingTest {
         start = System.nanoTime();
         threeWayMergeSort.doMergeSort(threeWayMergeSort.getArray());
         end = System.nanoTime();
-        System.out.println("3 way merge time : " + ((end - start) / 1000d) + "ms");
+        System.out.println("3 way merge time : " + ((end - start) / 1000d) + " microsecond");
         fileManger.writeFile(threeWayMergeSort.getArray(), threeWayMergeSort.getMergeCount());
     }
 }
