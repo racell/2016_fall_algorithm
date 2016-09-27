@@ -42,22 +42,4 @@ public class MaxHeap {
             MAX_HEAPIFY(nodes, i);
         }
     }
-
-    private class Node {
-        private int priority;
-        private String subject;
-
-        public Node(int priority, String subject) {
-            this.priority = priority;
-            this.subject = subject;
-        }
-
-        public int getPriority() {
-            return this.priority;
-        }
-
-        public String getSubject() {
-            return this.subject;
-        }
-    }
 }
