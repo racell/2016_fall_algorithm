@@ -19,4 +19,12 @@ public class Node {
     public String getSubject() {
         return this.subject;
     }
+
+    public void setPriority(int priority) {
+        this.priority = priority;
+    }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
 }

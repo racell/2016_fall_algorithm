@@ -1,5 +1,10 @@
 package maxPQ;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.Scanner;
+import java.util.StringTokenizer;
+
 /**
  * Created by SeongJung on 2016-09-26.
  */
@@ -7,9 +12,22 @@ public class MaxHeap {
     private Node[] nodes;
     private int heapSize;
 
-    public MaxHeap(int heapSize) {
+    public MaxHeap(Node[] nodes, int heapSize) {
         this.nodes = new Node[65];
         this.heapSize = heapSize;
+    }
+
+    public void readFile() throws IOException {
+        Scanner scanner = new Scanner(new File("week02/src/maxPQ/data03.txt"));
+
+        for (int i = 0; scanner.hasNext(); i++) {
+            StringTokenizer stringTokenizer = new StringTokenizer(scanner.nextLine(), ",");
+            while(stringTokenizer.hasMoreTokens()) {
+                nodes[i] = new Node(Integer.parseInt(stringTokenizer.nextToken()), stringTokenizer.nextToken());
+                this.heapSize++;
+            }
+        }
+        scanner.close();
     }
 
     private void MAX_HEAPIFY(Node[] nodes, int index) {
@@ -41,5 +59,17 @@ public class MaxHeap {
         for (int i = this.heapSize; i >= 1; i--) {
             MAX_HEAPIFY(nodes, i);
         }
+    }
+
+    public Node[] getNodes() {
+        return nodes;
+    }
+
+    public int getHeapSize() {
+        return heapSize;
+    }
+
+    public void setHeapSize(int heapSize) {
+        this.heapSize = heapSize;
     }
 }
