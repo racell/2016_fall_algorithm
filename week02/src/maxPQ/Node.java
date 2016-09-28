@@ -12,6 +12,10 @@ public class Node {
         this.subject = subject;
     }
 
+    public String toString() {
+        return this.priority + "," + this.subject;
+    }
+
     public int getPriority() {
         return this.priority;
     }

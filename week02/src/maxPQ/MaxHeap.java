@@ -12,18 +12,17 @@ public class MaxHeap {
     private Node[] nodes;
     private int heapSize;
 
-    public MaxHeap(Node[] nodes, int heapSize) {
+    public MaxHeap() {
         this.nodes = new Node[65];
-        this.heapSize = heapSize;
+        this.heapSize = 0;
     }
 
     public void readFile() throws IOException {
         Scanner scanner = new Scanner(new File("week02/src/maxPQ/data03.txt"));
-
-        for (int i = 0; scanner.hasNext(); i++) {
+        for (int i = 1; scanner.hasNext(); i++) {
             StringTokenizer stringTokenizer = new StringTokenizer(scanner.nextLine(), ",");
             while(stringTokenizer.hasMoreTokens()) {
-                nodes[i] = new Node(Integer.parseInt(stringTokenizer.nextToken()), stringTokenizer.nextToken());
+                this.nodes[i] = new Node(Integer.parseInt(stringTokenizer.nextToken()), stringTokenizer.nextToken());
                 this.heapSize++;
             }
         }
@@ -56,17 +55,23 @@ public class MaxHeap {
     }
 
     public void BUILD_MAX_HEAP(Node[] nodes) {
-        for (int i = this.heapSize; i >= 1; i--) {
+        for (int i = this.heapSize/2; i >= 1; i--) {
             MAX_HEAPIFY(nodes, i);
         }
     }
 
+    public void printQueue() {
+        for (int i = 1; i <= this.heapSize; i++) {
+            System.out.println(this.nodes[i].toString());
+        }
+    }
+
     public Node[] getNodes() {
-        return nodes;
+        return this.nodes;
     }
 
     public int getHeapSize() {
-        return heapSize;
+        return this.heapSize;
     }
 
     public void setHeapSize(int heapSize) {
