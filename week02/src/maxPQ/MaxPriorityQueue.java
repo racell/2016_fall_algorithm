@@ -26,6 +26,7 @@ public class MaxPriorityQueue {
 
     public void extract_max() {
         this.nodes[1] = this.nodes[this.heapSize--];
+        this.maxHeap.setHeapSize(this.heapSize);
         this.maxHeap.BUILD_MAX_HEAP(this.nodes);
     }
 
@@ -36,6 +37,7 @@ public class MaxPriorityQueue {
 
     public void h_delete(int index) {
         this.nodes[index] = this.nodes[this.heapSize--];
+        this.maxHeap.setHeapSize(this.heapSize);
         this.maxHeap.BUILD_MAX_HEAP(this.nodes);
     }
 }
