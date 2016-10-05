@@ -12,6 +12,11 @@ public class TestQuicksort {
         ArrayList<Integer> arrayList = fileManager.readFile();
         QuickSort quickSort = new QuickSort();
         quickSort.quickSort(arrayList,0,arrayList.size()-1);
-        fileManager.writeFile(arrayList);
+        fileManager.writeFile(arrayList, "outputNormal.txt");
+
+
+        arrayList = fileManager.readFile();
+        quickSort.randomizedQuickSort(arrayList, 0, arrayList.size()-1);
+        fileManager.writeFile(arrayList, "outputRandom.txt");
     }
 }

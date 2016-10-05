@@ -26,10 +26,10 @@ public class FileManager {
         return inputArray;
     }
 
-    public void writeFile(ArrayList<Integer> outputArray) throws IOException {
-        FileOutputStream fileOutputStream = new FileOutputStream(new File("week03/src/quicksort/output.txt"));
+    public void writeFile(ArrayList<Integer> outputArray, String filename) throws IOException {
+        FileOutputStream fileOutputStream = new FileOutputStream(new File("week03/src/quicksort/" + filename));
         fileOutputStream.close();
-        FileWriter fileWriter = new FileWriter(new File("week03/src/quicksort/output.txt"));
+        FileWriter fileWriter = new FileWriter(new File("week03/src/quicksort/" + filename));
         StringBuilder stringBuilder = new StringBuilder();
         while(!outputArray.isEmpty()) {
             stringBuilder.append(outputArray.remove(0));
