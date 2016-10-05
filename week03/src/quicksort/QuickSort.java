@@ -17,8 +17,8 @@ public class QuickSort {
     public void randomizedQuickSort(ArrayList<Integer> arrayList, int left, int right) {
         if (left < right) {
             int index = randomizedPartition(arrayList, left, right);
-            quickSort(arrayList, left, index-1);
-            quickSort(arrayList, index+1, right);
+            randomizedQuickSort(arrayList, left, index-1);
+            randomizedQuickSort(arrayList, index+1, right);
         }
     }
 
@@ -27,7 +27,7 @@ public class QuickSort {
         int index = left - 1;
 
         for (int i = left; i < right; i++) {
-            if (arrayList.get(i) < value) {
+            if (arrayList.get(i) <= value) {
                 index++;
                 int temp = arrayList.get(index);
                 arrayList.set(index, arrayList.get(i));
@@ -43,7 +43,7 @@ public class QuickSort {
     }
 
     private int randomizedPartition(ArrayList<Integer> arrayList, int left, int right) {
-        int index = 0;
+        int index;
         int[] temp = new int[3];
         for (int i = 0; i < 3; i++) {
             temp[i] = (int) (Math.random() * (right - left + 1)) + left;
