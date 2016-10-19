@@ -15,7 +15,7 @@ public class FibonacciTest {
         System.out.println("3. recursive squaring fibonacci");
         System.out.print("원하는 방식의 번호를 입력하세요 : ");
         int type = scanner.nextInt();
-        System.out.print("원하는 피보나치 값를 입력하세요 : ");
+        System.out.print("피봐치 수횅횟수를 입력하세요 : ");
         int num = scanner.nextInt();
 
         long start, end;
