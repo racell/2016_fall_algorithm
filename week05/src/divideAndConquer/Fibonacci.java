@@ -50,14 +50,14 @@ public class Fibonacci {
             return array;
         }
         else if (n % 2 == 0) {
-            return mul(pow(array, n/2), pow(array, n/2));
+            return multiply(pow(array, n/2), pow(array, n/2));
         }
         else {
-            return mul(mul(pow(array, (n - 1) / 2), pow(array, (n-1) / 2)),array);
+            return multiply(multiply(pow(array, (n - 1) / 2), pow(array, (n-1) / 2)),array);
         }
     }
 
-    private BigInteger[][] mul(BigInteger[][] first, BigInteger[][] second) {
+    private BigInteger[][] multiply(BigInteger[][] first, BigInteger[][] second) {
         BigInteger[][] result = new BigInteger[2][2];
         result[0][0] = first[0][0].multiply(second[0][0]).add(first[0][1].multiply(second[1][0]));
         result[0][1] = first[0][0].multiply(second[0][1]).add(first[0][1].multiply(second[1][1]));
