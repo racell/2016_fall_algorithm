@@ -26,7 +26,7 @@ public class FibonacciTest {
                     start = System.nanoTime();
                     System.out.print("f<" + i + "> = " + fibonacci.recursionFibonacci(i));
                     end = System.nanoTime();
-                    System.out.println("  실행시간 : " + (end - start) + "sec");
+                    System.out.println("  실행시간 : " + (end - start) + "nanosec");
                 }
                 break;
             case 2:
@@ -34,7 +34,7 @@ public class FibonacciTest {
                     start = System.nanoTime();
                     System.out.print("f<" + i + "> = " + fibonacci.arrayFibonacci(i));
                     end = System.nanoTime();
-                    System.out.println("  실행시간 : " + (end - start) + "sec");
+                    System.out.println("  실행시간 : " + (end - start) + "nanosec");
                 }
                 break;
             case 3:
@@ -42,7 +42,7 @@ public class FibonacciTest {
                     start = System.nanoTime();
                     System.out.print("f<" + i + "> = " + fibonacci.recursiveSquaringFibonacci(i));
                     end = System.nanoTime();
-                    System.out.println("  실행시간 : " + (end - start) + "sec");
+                    System.out.println("  실행시간 : " + (end - start) + "nanosec");
                 }
                 break;
             default :
