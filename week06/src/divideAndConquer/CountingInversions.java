@@ -13,32 +13,31 @@ public class CountingInversions {
 
         Inversion first = sortAndCount(new ArrayList<>(inputArray.subList(0, inputArray.size()/2)));
         Inversion second = sortAndCount(new ArrayList<>(inputArray.subList(inputArray.size()/2, inputArray.size())));
-        Inversion merge = mergeAndCount(first, second);
+        Inversion merge = mergeAndCount(first.getArrayList(), second.getArrayList());
 
         return new Inversion(first.getCount() + second.getCount() + merge.getCount(), merge.getArrayList());
     }
 
-    private Inversion mergeAndCount(Inversion first, Inversion second) {
+    private Inversion mergeAndCount(ArrayList<Integer> first, ArrayList<Integer> second) {
         int inversion_count = 0;
-        int firstIndex = 0, secondIndex = 0;
         ArrayList<Integer> result = new ArrayList<>();
 
-        while (firstIndex < first.getArrayList().size() && secondIndex < second.getArrayList().size()) {
-            if (first.getArrayList().get(firstIndex) < second.getArrayList().get(secondIndex)) {
-                inversion_count = inversion_count + second.getCount();
-                result.add(first.getArrayList().get(firstIndex++));
+        while (first.size() != 0 && second.size() != 0) {
+            if (first.get(0) > second.get(0)) {
+                inversion_count = inversion_count + first.size();
+                result.add(second.remove(0));
             }
             else {
-                result.add(second.getArrayList().get(secondIndex++));
+                result.add(first.remove(0));
             }
         }
 
-        while (firstIndex < first.getArrayList().size()) {
-            result.add(first.getArrayList().get(firstIndex++));
+        while (!first.isEmpty()) {
+            result.add(first.remove(0));
         }
 
-        while (secondIndex < second.getArrayList().size()) {
-            result.add(second.getArrayList().get(secondIndex++));
+        while (!second.isEmpty()) {
+            result.add(second.remove(0));
         }
 
         return new Inversion(inversion_count, result);
