@@ -11,10 +11,10 @@ public class ClosestPair {
         arrayList.sort(Comparator.comparing(Point::getX));
 
         if (arrayList.size() <= 3) {
-            double min = euclidianDistance(arrayList.get(0), arrayList.get(1));
+            double min = euclideanDistance(arrayList.get(0), arrayList.get(1));
             for (int i = 0; i < arrayList.size(); i++) {
                 for (int j = i + 1; j < arrayList.size(); j++) {
-                    double temp = euclidianDistance(arrayList.get(i), arrayList.get(j));
+                    double temp = euclideanDistance(arrayList.get(i), arrayList.get(j));
                     if (min > temp) {
                         min = temp;
                     }
@@ -27,22 +27,31 @@ public class ClosestPair {
         double second = closestPair(new ArrayList<>(arrayList.subList(arrayList.size()/2, arrayList.size())));
         double min = (first < second) ? first : second;
 
-        ArrayList<Point> reduce = new ArrayList<>(arrayList.subList((int)(arrayList.size()/2-min), (int)(arrayList.size()/2+min)));
+        ArrayList<Point> reduce = new ArrayList<>();
+        Point mid = arrayList.get(arrayList.size()/2);
+        for (int i = 0; i < arrayList.size(); i++) {
+            if (Math.abs(arrayList.get(i).getX() - mid.getX()) < min) {
+                reduce.add(arrayList.get(i));
+            }
+        }
+
         reduce.sort(Comparator.comparing(Point::getY));
 
-        double result = 0;
         for (int i = 0; i < reduce.size(); i++) {
             for (int j = i + 1; j < reduce.size(); j++) {
-                if (reduce.get(j).getY() - reduce.get(i).getY() < min) {
-                    result = euclidianDistance(reduce.get(i), reduce.get(j));
+                if (Math.abs(reduce.get(j).getY() - reduce.get(i).getY()) < min) {
+                    double temp = euclideanDistance(reduce.get(i), reduce.get(j));
+                    if (min > temp) {
+                        min = temp;
+                    }
                 }
             }
         }
 
-        return result;
+        return min;
     }
 
-    private double euclidianDistance(Point p, Point q) {
+    private double euclideanDistance(Point p, Point q) {
         return Math.sqrt(Math.pow((q.getX() - p.getX()),2) + Math.pow((q.getY() - p.getY()),2));
     }
 }
