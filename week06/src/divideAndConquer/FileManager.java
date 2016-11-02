@@ -23,4 +23,18 @@ public class FileManager {
         scanner.close();
         return inputArray;
     }
+
+    public ArrayList<Point> readFileForClosestPair() throws IOException {
+        Scanner scanner = new Scanner(new File("week06/src/divideAndConquer/data07_closest.txt"));
+        ArrayList<Point> inputArray = new ArrayList<>();
+
+        while(scanner.hasNext()) {
+            StringTokenizer stringTokenizer = new StringTokenizer(scanner.nextLine(), ",");
+            while(stringTokenizer.hasMoreTokens()) {
+                inputArray.add(new Point(Double.parseDouble(stringTokenizer.nextToken()), Double.parseDouble(stringTokenizer.nextToken())));
+            }
+        }
+        scanner.close();
+        return inputArray;
+    }
 }
