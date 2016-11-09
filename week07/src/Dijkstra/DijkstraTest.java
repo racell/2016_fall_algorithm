@@ -12,6 +12,8 @@ public class DijkstraTest {
         System.out.print("Enter the number of nodes : ");
         int nodes = Integer.parseInt(scanner.nextLine());
 
+        System.out.println();
+
         int[][] cost = new int[nodes][nodes];
         System.out.println("Enter the cost matrix : ");
         for (int i = 0; i < nodes; i++) {
@@ -22,8 +24,12 @@ public class DijkstraTest {
             }
         }
 
+        System.out.println();
+
         System.out.print("Enter the source matrix : ");
         int source = Integer.parseInt(scanner.nextLine()) - 1;
+
+        System.out.println();
 
         Dijkstra dijkstra = new Dijkstra(nodes);
         int[] result = dijkstra.shortestPath(cost, source);
