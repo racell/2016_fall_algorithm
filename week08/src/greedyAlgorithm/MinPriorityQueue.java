@@ -30,15 +30,23 @@ public class MinPriorityQueue {
         this.minHeap.BUILD_MIN_HEAP(this.nodes);
     }
 
-    public void updatedistance(int index, int path, int preVertex) {
+    public void updateDistance(int index, int path) {
         for (int i = 1; i <= heapSize; i++) {
             if (index == nodes[i].getVertex()) {
-                nodes[i].setShortestPath(path);
-                nodes[i].setPreVertex(preVertex);
+                nodes[i].setPath(path);
                 this.minHeap.BUILD_MIN_HEAP(this.nodes);
                 return;
             }
         }
+    }
+
+    public boolean hasVertex(int index) {
+        for (int i = 1; i <= heapSize; i++) {
+            if (index == nodes[i].getVertex()) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public boolean isEmpty() {

@@ -4,51 +4,44 @@ package greedyAlgorithm;
  * Created by SeongJung on 2016-11-15.
  */
 public class Prim {
-    private int[] distanceVector;
+    private int[] distance;
+    private int[] parent;
     private int vectorSize;
     private final int inf = Integer.MAX_VALUE;
-    private
-    Node[] parentVector;
 
     public Prim(int node) {
         this.vectorSize = node;
-        this.distanceVector = new int[this.vectorSize];
-        this.parentVector = new Node[this.vectorSize];
+        this.distance = new int[this.vectorSize];
+        this.parent = new int[this.vectorSize];
     }
 
     public int[] shortestPath(int[][] weight, int v) {
         MinPriorityQueue minPriorityQueue = new MinPriorityQueue(new MinHeap());
         for (int i = 0; i < this.vectorSize; i++) {
             if (i == v) {
-                this.distanceVector[i] = 0;
+                this.distance[i] = 0;
             } else {
-                this.distanceVector[i] = inf;
+                this.distance[i] = inf;
             }
-            minPriorityQueue.insert(new Node(i, this.distanceVector[i], 0, (char)(i+97)));
+            minPriorityQueue.insert(new Node(i, this.distance[i], ""));
         }
 
         while (!minPriorityQueue.isEmpty()) {
             Node min = minPriorityQueue.min();
             minPriorityQueue.extract_min();
-            for (int i = 0; i < distanceVector.length; i++) {
-                if (i == min.getVertex()) {
-                    continue;
-                }
-                if (weight[min.getVertex()][i] != 0) {
-                    int newDistance = weight[min.getVertex()][i];
-                    if (newDistance < distanceVector[i]) {
-                        distanceVector[i] = newDistance;
-                        minPriorityQueue.updatedistance(i, newDistance, min.getVertex());
-                        this.parentVector[i] = min;
-                    }
+            for (int i = 0; i < weight[min.getVertex()].length; i++) {
+                if (weight[min.getVertex()][i] != 0 && minPriorityQueue.hasVertex(i) && weight[min.getVertex()][i] < distance[i]) {
+                    distance[i] = weight[min.getVertex()][i];
+                    parent[i] = min.getVertex();
+                    minPriorityQueue.updateDistance(i, distance[i]);
                 }
             }
         }
 
-        return distanceVector;
+        return distance;
     }
 
-    public Node[] getParentVector() {
-        return this.parentVector;
+    public int[] getParent() {
+        return this.getParent();
     }
 }

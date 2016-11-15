@@ -1,35 +1,28 @@
 package greedyAlgorithm;
 
+import java.util.ArrayList;
+
 /**
  * Created by SeongJung on 2016-09-27.
  */
 public class Node {
     private int vertex;
-    private int shortestPath;
-    private int preVertex;
-    private char name;
+    private int path;
+    private String name;
 
-    public Node(int vertex, int shortestPath, int preVertex, char name) {
+
+    public Node(int vertex, int path, String name) {
         this.vertex = vertex;
-        this.shortestPath = shortestPath;
-        this.preVertex = preVertex;
+        this.path = path;
         this.name = name;
     }
 
-    public int getShortestPath() {
-        return shortestPath;
+    public int getPath() {
+        return path;
     }
 
-    public void setShortestPath(int shortestPath) {
-        this.shortestPath = shortestPath;
-    }
-
-    public void setPreVertex(int preVertex) {
-        this.preVertex = preVertex;
-    }
-
-    public int getPreVertex() {
-        return preVertex;
+    public void setPath(int path) {
+        this.path = path;
     }
 
     public int getVertex() {
