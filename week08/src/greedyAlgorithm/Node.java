@@ -8,13 +8,10 @@ import java.util.ArrayList;
 public class Node {
     private int vertex;
     private int path;
-    private String name;
 
-
-    public Node(int vertex, int path, String name) {
+    public Node(int vertex, int path) {
         this.vertex = vertex;
         this.path = path;
-        this.name = name;
     }
 
     public int getPath() {

@@ -17,14 +17,14 @@ public class MinHeap {
         int rightChild = 2*index+1;
         int smallest;
 
-        if (leftChild <= heapSize && nodes[leftChild].getShortestPath() < nodes[index].getShortestPath()) {
+        if (leftChild <= heapSize && nodes[leftChild].getPath() < nodes[index].getPath()) {
             smallest = leftChild;
         }
         else {
             smallest = index;
         }
 
-        if (rightChild <= heapSize && nodes[rightChild].getShortestPath() < nodes[smallest].getShortestPath()) {
+        if (rightChild <= heapSize && nodes[rightChild].getPath() < nodes[smallest].getPath()) {
             smallest = rightChild;
         }
 
