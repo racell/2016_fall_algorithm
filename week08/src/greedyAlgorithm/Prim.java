@@ -24,13 +24,13 @@ public class Prim {
             } else {
                 this.distance[i] = inf;
             }
-            minPriorityQueue.insert(new Node(i, this.distance[i]));
+            minPriorityQueue.insert(new PrimNode(i, this.distance[i]));
         }
 
         int sum = 0;
 
         while (!minPriorityQueue.isEmpty()) {
-            Node min = minPriorityQueue.min();
+            PrimNode min = minPriorityQueue.min();
             minPriorityQueue.extract_min();
             sum += distance[min.getVertex()];
             System.out.println("w(" + this.parent[min.getVertex()] + "," + (char)(min.getVertex() + 97) + ") = " + distance[min.getVertex()]);

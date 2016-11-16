@@ -5,7 +5,7 @@ package greedyAlgorithm;
  */
 public class MinPriorityQueue {
     private MinHeap minHeap;
-    private Node[] nodes;
+    private PrimNode[] nodes;
     private int heapSize;
 
     public MinPriorityQueue(MinHeap minHeap) {
@@ -14,13 +14,13 @@ public class MinPriorityQueue {
         this.heapSize = minHeap.getHeapSize();
     }
 
-    public void insert(Node newNode) {
+    public void insert(PrimNode newNode) {
         this.nodes[++this.heapSize] = newNode;
         this.minHeap.setHeapSize(this.heapSize);
         this.minHeap.BUILD_MIN_HEAP(this.nodes);
     }
 
-    public Node min() {
+    public PrimNode min() {
         return this.nodes[1];
     }
 

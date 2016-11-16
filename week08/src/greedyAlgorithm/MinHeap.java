@@ -4,15 +4,15 @@ package greedyAlgorithm;
  * Created by SeongJung on 2016-09-26.
  */
 public class MinHeap {
-    private Node[] nodes;
+    private PrimNode[] nodes;
     private int heapSize;
 
     public MinHeap() {
-        this.nodes = new Node[65];
+        this.nodes = new PrimNode[65];
         this.heapSize = 0;
     }
 
-    private void MIN_HEAPIFY(Node[] nodes, int index) {
+    private void MIN_HEAPIFY(PrimNode[] nodes, int index) {
         int leftChild = 2*index;
         int rightChild = 2*index+1;
         int smallest;
@@ -29,7 +29,7 @@ public class MinHeap {
         }
 
         if (smallest != index) {
-            Node temp = nodes[index];
+            PrimNode temp = nodes[index];
             nodes[index] = nodes[smallest];
             nodes[smallest] = temp;
 
@@ -37,13 +37,13 @@ public class MinHeap {
         }
     }
 
-    public void BUILD_MIN_HEAP(Node[] nodes) {
+    public void BUILD_MIN_HEAP(PrimNode[] nodes) {
         for (int i = this.heapSize/2; i >= 1; i--) {
             MIN_HEAPIFY(nodes, i);
         }
     }
 
-    public Node[] getNodes() {
+    public PrimNode[] getNodes() {
         return this.nodes;
     }
 

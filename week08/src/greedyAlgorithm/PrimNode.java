@@ -5,11 +5,11 @@ import java.util.ArrayList;
 /**
  * Created by SeongJung on 2016-09-27.
  */
-public class Node {
+public class PrimNode {
     private int vertex;
     private int path;
 
-    public Node(int vertex, int path) {
+    public PrimNode(int vertex, int path) {
         this.vertex = vertex;
         this.path = path;
     }
