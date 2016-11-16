@@ -1,7 +1,5 @@
 package greedyAlgorithm;
 
-import java.util.ArrayList;
-
 /**
  * Created by SeongJung on 2016-09-27.
  */

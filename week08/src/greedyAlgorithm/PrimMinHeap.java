@@ -3,11 +3,11 @@ package greedyAlgorithm;
 /**
  * Created by SeongJung on 2016-09-26.
  */
-public class MinHeap {
+public class PrimMinHeap {
     private PrimNode[] nodes;
     private int heapSize;
 
-    public MinHeap() {
+    public PrimMinHeap() {
         this.nodes = new PrimNode[65];
         this.heapSize = 0;
     }

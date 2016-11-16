@@ -3,12 +3,12 @@ package greedyAlgorithm;
 /**
  * Created by SeongJung on 2016-09-27.
  */
-public class MinPriorityQueue {
-    private MinHeap minHeap;
+public class PrimMinPriorityQueue {
+    private PrimMinHeap minHeap;
     private PrimNode[] nodes;
     private int heapSize;
 
-    public MinPriorityQueue(MinHeap minHeap) {
+    public PrimMinPriorityQueue(PrimMinHeap minHeap) {
         this.minHeap = minHeap;
         this.nodes = minHeap.getNodes();
         this.heapSize = minHeap.getHeapSize();

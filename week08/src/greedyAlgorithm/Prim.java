@@ -16,7 +16,7 @@ public class Prim {
     }
 
     public void shortestPath(int[][] weight, int v) {
-        MinPriorityQueue minPriorityQueue = new MinPriorityQueue(new MinHeap());
+        PrimMinPriorityQueue minPriorityQueue = new PrimMinPriorityQueue(new PrimMinHeap());
         for (int i = 0; i < this.vectorSize; i++) {
             if (i == v) {
                 this.distance[i] = 0;
