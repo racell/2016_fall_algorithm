@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
+import java.util.StringTokenizer;
 
 /**
  * Created by SeongJung on 2016-11-16.
@@ -38,8 +39,23 @@ public class FileManager {
         return scanner.nextLine();
     }
 
-    public void readEncodedFile() throws IOException {
+    public String readEncodedFile() throws IOException {
+        Scanner scanner = new Scanner(new File("week08/src/greedyAlgorithm/Huffman/data10_encoded.txt"));
+        return scanner.nextLine();
+    }
 
+    public HashMap<String, Character> readHuffmanTableFile() throws IOException {
+        Scanner scanner = new Scanner(new File("week08/src/greedyAlgorithm/Huffman/data10_table.txt"));
+        HashMap<String, Character> map = new HashMap<>();
+
+        while (scanner.hasNext()) {
+            StringTokenizer stringTokenizer = new StringTokenizer(scanner.nextLine(), ",");
+            char value = stringTokenizer.nextToken().charAt(0);
+            String key = stringTokenizer.nextToken();
+            map.put(key, value);
+        }
+
+        return map;
     }
 
     public void writeTableFile(HashMap<Character, String> huffmanTable) throws IOException {
@@ -58,6 +74,14 @@ public class FileManager {
         FileOutputStream fileOutputStream = new FileOutputStream(new File("week08/src/greedyAlgorithm/Huffman/hw08_00_201202135_encoded.txt"));
         fileOutputStream.close();
         FileWriter fileWriter = new FileWriter(new File("week08/src/greedyAlgorithm/Huffman/hw08_00_201202135_encoded.txt"));
+        fileWriter.write(stringBuilder.toString());
+        fileWriter.close();
+    }
+
+    public void writeDecodedFile(StringBuilder stringBuilder) throws IOException {
+        FileOutputStream fileOutputStream = new FileOutputStream(new File("week08/src/greedyAlgorithm/Huffman/hw08_00_201202135_decoded.txt"));
+        fileOutputStream.close();
+        FileWriter fileWriter = new FileWriter(new File("week08/src/greedyAlgorithm/Huffman/hw08_00_201202135_decoded.txt"));
         fileWriter.write(stringBuilder.toString());
         fileWriter.close();
     }

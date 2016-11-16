@@ -54,8 +54,20 @@ public class Huffman {
         return stringBuilder;
     }
 
-    public void huffmanDecoding() {
-
+    public StringBuilder huffmanDecoding(String encodedText, HashMap<String, Character> map) {
+        StringBuilder stringBuilder = new StringBuilder();
+        int i = 1;
+        while (!encodedText.isEmpty()) {
+            String temp = encodedText.substring(0,i);
+            String rest = encodedText.substring(i);
+            if (map.containsKey(temp)) {
+                stringBuilder.append(map.get(temp));
+                encodedText = rest;
+                i = 1;
+            }
+            i++;
+        }
+        return stringBuilder;
     }
 
     public HashMap<Character, String> getMap() {

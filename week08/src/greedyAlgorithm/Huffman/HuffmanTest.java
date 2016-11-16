@@ -12,6 +12,6 @@ public class HuffmanTest {
         huffman.buildTable(huffman.buildTree(fileManager.readStringFileToArrayList()));
         fileManager.writeTableFile(huffman.getMap());
         fileManager.writeEncodedFile(huffman.huffmanEncoding(fileManager.readStringFileToString()));
-
+        fileManager.writeDecodedFile(huffman.huffmanDecoding(fileManager.readEncodedFile(), fileManager.readHuffmanTableFile()));
     }
 }
