@@ -1,35 +1,35 @@
-package greedyAlgorithm;
+package greedyAlgorithm.Huffman;
 
 /**
- * Created by SeongJung on 2016-09-26.
+ * Created by SeongJung on 2016-11-16.
  */
-public class PrimMinHeap {
-    private PrimNode[] nodes;
+public class HuffmanMinHeap {
+    private HuffmanNode[] nodes;
     private int heapSize;
 
-    public PrimMinHeap() {
-        this.nodes = new PrimNode[65];
+    public HuffmanMinHeap() {
+        this.nodes = new HuffmanNode[65];
         this.heapSize = 0;
     }
 
-    private void MIN_HEAPIFY(PrimNode[] nodes, int index) {
+    private void MIN_HEAPIFY(HuffmanNode[] nodes, int index) {
         int leftChild = 2*index;
         int rightChild = 2*index+1;
         int smallest;
 
-        if (leftChild <= heapSize && nodes[leftChild].getPath() < nodes[index].getPath()) {
+        if (leftChild <= heapSize && nodes[leftChild].getFreq() < nodes[index].getFreq()) {
             smallest = leftChild;
         }
         else {
             smallest = index;
         }
 
-        if (rightChild <= heapSize && nodes[rightChild].getPath() < nodes[smallest].getPath()) {
+        if (rightChild <= heapSize && nodes[rightChild].getFreq() < nodes[smallest].getFreq()) {
             smallest = rightChild;
         }
 
         if (smallest != index) {
-            PrimNode temp = nodes[index];
+            HuffmanNode temp = nodes[index];
             nodes[index] = nodes[smallest];
             nodes[smallest] = temp;
 
@@ -37,13 +37,13 @@ public class PrimMinHeap {
         }
     }
 
-    public void BUILD_MIN_HEAP(PrimNode[] nodes) {
+    public void BUILD_MIN_HEAP(HuffmanNode[] nodes) {
         for (int i = this.heapSize/2; i >= 1; i--) {
             MIN_HEAPIFY(nodes, i);
         }
     }
 
-    public PrimNode[] getNodes() {
+    public HuffmanNode[] getNodes() {
         return this.nodes;
     }
 

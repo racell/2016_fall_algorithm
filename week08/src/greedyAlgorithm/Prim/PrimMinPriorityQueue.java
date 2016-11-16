@@ -1,4 +1,4 @@
-package greedyAlgorithm;
+package greedyAlgorithm.Prim;
 
 /**
  * Created by SeongJung on 2016-09-27.
