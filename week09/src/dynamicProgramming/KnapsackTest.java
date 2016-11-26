@@ -26,5 +26,6 @@ public class KnapsackTest {
         Knapsack knapsack = new Knapsack(scanner1.nextInt(), items.size());
         knapsack.setItems(items);
         knapsack.insertTable();
+        knapsack.printMaxValueAndPickedItems();
     }
 }

@@ -14,7 +14,7 @@ public class Knapsack {
     public Knapsack(int bagSize, int itemSize) {
         this.bagSize = bagSize;
         this.itemSize = itemSize;
-        this.bag = new int[bagSize+1][itemSize+1];
+        this.bag = new int[itemSize][bagSize+1];
     }
 
     public int opt(int index, int weight) {
@@ -24,6 +24,42 @@ public class Knapsack {
             return opt(index - 1, weight);
         } else {
             return Math.max(opt(index - 1, weight), items.get(index).getValue() + opt(index - 1, weight - items.get(index).getWeight()));
+        }
+    }
+
+    public void insertTable() {
+        for (int i = 0; i < itemSize; i++) {
+            for (int j = 0; j <= bagSize; j++) {
+                bag[i][j] = opt(i, j);
+                System.out.printf("%4d", bag[i][j]);
+            }
+            System.out.println();
+        }
+    }
+
+    public void printMaxValueAndPickedItems() {
+        ArrayList<Integer> pickedItems = new ArrayList<>();
+        System.out.println("Max : " + bag[itemSize-1][bagSize]);
+        System.out.print("Items : ");
+        int i = itemSize - 1;
+        int j = bagSize;
+        while (i > 0) {
+            if (j < items.get(i).getWeight()) {
+                i--;
+                continue;
+            } else if (bag[i][j] - bag[i - 1][j - items.get(i).getWeight()] == items.get(i).getValue()) {
+                pickedItems.add(i);
+                j = j - items.get(i).getWeight();
+                i--;
+                if (j == 0) {
+                    break;
+                }
+            } else {
+                i--;
+            }
+        }
+        for (i = pickedItems.size() - 1; i >= 0; i--) {
+            System.out.print(pickedItems.get(i) + " ");
         }
     }
 
